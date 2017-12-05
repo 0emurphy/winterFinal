@@ -28,7 +28,7 @@ function Device(t,ma,c){
 
 this.wake = function(){
       if(this.state == !"off"){
-            this.state = "idle";
+            this.state = "ative";
       }
 };
 
@@ -47,12 +47,15 @@ this.use = function(min){
       if(this.state = "off"){
             this.juice = this.juice - this.rate[0]*time;
       }
-      if(this.state = "idle"){
+      else if(this.state = "idle"){
             this.juice = this.juice - this.rate[1]*time;
       }
-      if(this.state = "active"){
+      else{
             this.juice = this.juice - this.rate[2]*time;
       }
+     if(this.juice < 0){
+           this.juice = 0;
+     }
 };
 
     this.charge = function(min){
@@ -77,9 +80,11 @@ this.use = function(min){
        }
 
         //resets juice to 1 if it has exceeded 1
-        if(juice > 1){
-             juice = 1;
+        if(this.juice > 1){
+             this.juice = 1;
        }
+
+
 
     };
 
