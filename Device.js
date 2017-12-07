@@ -27,7 +27,7 @@ function Device(t,ma,c){
       };
 
 this.wake = function(){
-      if(this.state == !"off"){
+      if(!(this.state == "active")){
             this.state = "ative";
       }
 };
