@@ -1,3 +1,6 @@
+const Device = require('./Device.js');
+
+
 //defines how all charging stations work.
 function ChargingDock(){
 
@@ -8,9 +11,9 @@ function ChargingDock(){
 
 //Instance Fucntions
     this.plug = function(dvc){
-        for(s = 0; s < this.ports.lengh; s++){
-             if(this.ports[s] == "red"){
-                   this.ports[s] = dvc;
+        for(let s = 0; s < this.ports.length; s++){
+             if(this.leds[s] == "red"){
+                   this.ports[s]= dvc;
                    this.leds[s] = "yellow";
                    break;
              }
@@ -18,7 +21,7 @@ function ChargingDock(){
     };
 
     this.unplug = function(dvcIdx){
-        if(this.leds[dvcIdx] == "yellow" || "green"){
+        if(this.leds[dvcIdx] == "yellow" || this.leds[dvcIdx]=="green"){
              let temp = this.ports[dvcIdx];
              this.ports[dvcIdx] = "undefined";
              this.leds[dvcIdx] = "red";
@@ -41,7 +44,13 @@ function ChargingDock(){
 }
 
 //defines the testing code
-function main(){}
+function main(){
+      let dock = new ChargingDock();
+      let DelsPhone = new Device("iphone", 1500, 5000);
+
+      dock.plug(DelsPhone);
+      console.log(dock.unplug(0));
+}
 
 //runs the main code
 main();
