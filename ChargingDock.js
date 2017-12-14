@@ -5,7 +5,7 @@ function ChargingDock(){
     this.plug = function(dvc){
         for(let s = 0; s < this.ports.length; s++){
              if(this.leds[s] == "red"){
-                   this.ports[s]= dvc;
+                   this.ports[s] = dvc;
                    this.leds[s] = "yellow";
                    break;
              }
@@ -21,7 +21,7 @@ function ChargingDock(){
     };
     this.chargeAll = function(min){
         for(s = 0; s < this.ports.lengh; s++){
-             if(this.leds[s] == "yellow" || "green"){
+             if(this.leds[s] == "yellow" || this.leds[s] == "green"){
                    this.ports[s].charge(min);
              }
              if(this.ports[s].juice >= 0.99){
